@@ -1,58 +1,24 @@
-# テーブル設計
+# README
 
-## users テーブル
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-| Column       | Type   | Options     |
-| --------     | ------ | ----------- |
-| name         | string | null: false |
-| nickname     | string | null: false |
-| email        | string | null: false |
-| password     | string | null: false |
-| password(con)| string | null: false |
-| birth        | string | null: false |
+Things you may want to cover:
 
-### Association
-- has_many :itemes
+* Ruby version
 
-## items テーブル
-| Column    | Type   | Options     |
-| --------- | ------ | ----------- |
-| title     | string | null: false |
-| image     | ActiveStorage  |
-| price     | string | null: false |
-| owner     | string | null: false |
-| category  | string | null: false |
-| status    | string | null: false |
-| Deliveryfee| string | null: false |
-| region    | string | null: false |
-|shippingdate| string | null: false |
-| comments  | text   | null: false |
+* System dependencies
 
-### Association
-- belong_to :users
-- has_one :buyers
+* Configuration
 
+* Database creation
 
-## buyers テーブル
-| Column | Type       | Options                        |
-| ------ | ---------- | ------------------------------ |
-| name   | string     | null: false|
-| address| reference  | foreign_key:true |
+* Database initialization
 
+* How to run the test suite
 
-### Association
-- belong_to :items
-- has_one : address
+* Services (job queues, cache servers, search engines, etc.)
 
-## address テーブル
-| Column | Type       | Options                        |
-| ------ | ---------- | ------------------------------ |
-| postnum| string     | null: false|
-| state  | string     | null: false|
-| city   | string     | null: false|
-|housenum| string     | null: false|
-|building| string     | null: false|
-|telenum | string     | null: false|
+* Deployment instructions
 
-### Association
-- belong_to :buyers
+* ...
