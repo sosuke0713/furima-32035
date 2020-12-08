@@ -8,11 +8,11 @@
 | nickname     | string | null: false |
 | email        | string | null: false |
 | password     | string | null: false |
-| password(con)| string | null: false |
-| birth        | string | null: false |
+| encrypted_password| string | null: false |
+| birth        | date | null: false |
 
 ### Association
-- has_many :itemes
+- has_many :items
 
 ## items テーブル
 | Column    | Type   | Options     |
@@ -20,39 +20,39 @@
 | title     | string | null: false |
 | image     | ActiveStorage  |
 | price     | string | null: false |
-| owner     | string | null: false |
+| owner     | string | null: false , foreign_key:true|
 | category  | string | null: false |
-| status    | string | null: false |
-| Deliveryfee| string | null: false |
-| region    | string | null: false |
-|shippingdate| string | null: false |
+| status    | integer | null: false |
+| Deliveryfee| integer | null: false |
+| region    | integer | null: false |
+|shippingdate| integer | null: false |
 | comments  | text   | null: false |
 
 ### Association
-- belong_to :users
-- has_one :buyers
+- belong_to :user
+- has_one :buyer
 
 
 ## buyers テーブル
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
-| name   | string     | null: false|
-| address| reference  | foreign_key:true |
+| name   | string     | null: false, foreign_key:true |
+| address| reference  | null: false, foreign_key:true |
 
 
 ### Association
-- belong_to :items
+- belong_to :item
 - has_one : address
 
 ## address テーブル
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
 | postnum| string     | null: false|
-| state  | string     | null: false|
+| state  | integer     | null: false|
 | city   | string     | null: false|
-|housenum| string     | null: false|
+|housenum| string     |            |
 |building| string     | null: false|
 |telenum | string     | null: false|
 
 ### Association
-- belong_to :buyers
+- belong_to :buyer
