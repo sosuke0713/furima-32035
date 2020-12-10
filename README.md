@@ -5,9 +5,9 @@
 | Column       | Type   | Options     |
 | --------     | ------ | ----------- |
 | familyname | string | null: false |
-|familyhurigana| string | null: false|
+|family_hurigana| string | null: false|
 | firstname  | string | null: false |
-| firsthurigana|string| null: false |
+| first_hurigana|string| null: false |
 | nickname     | string | null: false |
 | email        | string | null: false |
 | encrypted_password| string | null: false |
@@ -25,7 +25,7 @@
 | user      | references | foreign_key:true|
 | category_id  | integer | null: false |
 | status_id    | integer | null: false |
-| Deliveryfee_id| integer | null: false |
+| deliveryfee_id| integer | null: false |
 | region_id    | integer | null: false |
 |shippingdate_id| integer | null: false |
 | comments  | text   | null: false |
