@@ -53,7 +53,7 @@
 | state_id | integer  | null: false|
 | city   | string     | null: false|
 |housenum| string     | null: false|
-|building| string     | null: false|
+|building| string     |
 |telenum | string     | null: false|
 | buyer  | reference  | foreign_key:true |
 
