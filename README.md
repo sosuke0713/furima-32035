@@ -9,7 +9,7 @@
 | firstname  | string | null: false |
 | first_hurigana|string| null: false |
 | nickname     | string | null: false |
-| email        | string | null: false |
+| email        | string | null: false ,unique: true|
 | encrypted_password| string | null: false |
 | birth        | date | null: false |
 
@@ -26,7 +26,7 @@
 | category_id  | integer | null: false |
 | status_id    | integer | null: false |
 | deliveryfee_id| integer | null: false |
-| region_id    | integer | null: false |
+| state_id    | integer | null: false |
 |shippingdate_id| integer | null: false |
 | comments  | text   | null: false |
 
@@ -51,7 +51,7 @@
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
 | postnum| string     | null: false|
-| state  | integer     | null: false|
+| state_id | integer  | null: false|
 | city   | string     | null: false|
 |housenum| string     |            |
 |building| string     | null: false|
