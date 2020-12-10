@@ -1,24 +1,61 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column       | Type   | Options     |
+| --------     | ------ | ----------- |
+| familyname | string | null: false |
+|family_hurigana| string | null: false|
+| firstname  | string | null: false |
+| first_hurigana|string| null: false |
+| nickname     | string | null: false |
+| email        | string | null: false ,unique: true|
+| encrypted_password| string | null: false |
+| birth        | date | null: false |
 
-* Ruby version
+### Association
+- has_many :items
+- has_many :buyers
 
-* System dependencies
+## items テーブル
+| Column    | Type   | Options     |
+| --------- | ------ | ----------- |
+| title     | string | null: false |
+| price     | integer | null: false |
+| user      | references | foreign_key:true|
+| category_id  | integer | null: false |
+| status_id    | integer | null: false |
+| deliveryfee_id| integer | null: false |
+| state_id    | integer | null: false |
+|shippingdate_id| integer | null: false |
+| comments  | text   | null: false |
 
-* Configuration
+### Association
+- belong_to :user
+- has_one :buyer
 
-* Database creation
 
-* Database initialization
+## buyers テーブル
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| user   | references | foreign_key:true |
+| item   | references | foreign_key:true |
 
-* How to run the test suite
+### Association
+- belong_to :item
+- belong_to :user
+- has_one : address
 
-* Services (job queues, cache servers, search engines, etc.)
+## address テーブル
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| postnum| string     | null: false|
+| state_id | integer  | null: false|
+| city   | string     | null: false|
+|housenum| string     | null: false|
+|building| string     |
+|telenum | string     | null: false|
+| buyer  | reference  | foreign_key:true |
 
-* Deployment instructions
-
-* ...
+### Association
+- belong_to :buyer
