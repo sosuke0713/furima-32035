@@ -7,20 +7,19 @@
 | name         | string | null: false |
 | nickname     | string | null: false |
 | email        | string | null: false |
-| password     | string | null: false |
 | encrypted_password| string | null: false |
 | birth        | date | null: false |
 
 ### Association
 - has_many :items
+- has_many :buyers
 
 ## items テーブル
 | Column    | Type   | Options     |
 | --------- | ------ | ----------- |
 | title     | string | null: false |
-| image     | ActiveStorage  |
-| price     | string | null: false |
-| owner     | string | null: false , foreign_key:true|
+| price     | integer | null: false |
+| user      | references | foreign_key:true|
 | category  | string | null: false |
 | status    | integer | null: false |
 | Deliveryfee| integer | null: false |
@@ -36,8 +35,7 @@
 ## buyers テーブル
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
-| name   | string     | null: false, foreign_key:true |
-| address| reference  | null: false, foreign_key:true |
+| user   | references | foreign_key:true |
 
 
 ### Association
