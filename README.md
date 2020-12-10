@@ -4,7 +4,10 @@
 
 | Column       | Type   | Options     |
 | --------     | ------ | ----------- |
-| name         | string | null: false |
+| familyname | string | null: false |
+|familyhurigana| string | null: false|
+| firstname  | string | null: false |
+| firsthurigana|string| null: false |
 | nickname     | string | null: false |
 | email        | string | null: false |
 | encrypted_password| string | null: false |
@@ -20,11 +23,11 @@
 | title     | string | null: false |
 | price     | integer | null: false |
 | user      | references | foreign_key:true|
-| category  | string | null: false |
-| status    | integer | null: false |
-| Deliveryfee| integer | null: false |
-| region    | integer | null: false |
-|shippingdate| integer | null: false |
+| category_id  | integer | null: false |
+| status_id    | integer | null: false |
+| Deliveryfee_id| integer | null: false |
+| region_id    | integer | null: false |
+|shippingdate_id| integer | null: false |
 | comments  | text   | null: false |
 
 ### Association
@@ -36,10 +39,12 @@
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
 | user   | references | foreign_key:true |
+| item   | references | foreign_key:true |
 
 
 ### Association
 - belong_to :item
+- belong_to :user
 - has_one : address
 
 ## address テーブル
