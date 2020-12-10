@@ -41,7 +41,6 @@
 | user   | references | foreign_key:true |
 | item   | references | foreign_key:true |
 
-
 ### Association
 - belong_to :item
 - belong_to :user
@@ -53,9 +52,10 @@
 | postnum| string     | null: false|
 | state_id | integer  | null: false|
 | city   | string     | null: false|
-|housenum| string     |            |
+|housenum| string     | null: false|
 |building| string     | null: false|
 |telenum | string     | null: false|
+| buyer  | reference  | foreign_key:true |
 
 ### Association
 - belong_to :buyer
