@@ -7,11 +7,9 @@ require 'rails_helper'
 
   describe 'ユーザー新規登録' do
 
-    context "全部正常に入力されれば登録できる" do
-      it "passwordが6文字以上であれば登録できること" do
-        @user.password = "aaaa123456"
-        @user.password_confirmation = "aaaa123456"
-        expect(@user).to be_valid
+    context "新規登録がうまくいく"
+      it "全部正常に入力されれば登録できる" do
+         expect(@user).to be_valid
       end
     end
    
