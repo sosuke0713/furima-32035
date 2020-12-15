@@ -12,6 +12,7 @@ class User < ApplicationRecord
     validates :first_hurigana, format: { with: /\A[ァ-ヶー－]+\z/, message: "is invalid. Input full-width katakana characters."}
     validates :nickname  
     validates :birth
+    validates :password, format: { with: /\A[a-zA-Z0-9]+\z/, message: "is invalid. Input full-width katakana characters."}
   end
 
   has_many :items

@@ -43,10 +43,9 @@ require 'rails_helper'
     end
 
      it "password:半角英数混合（半角英語のみ）" do
-      @user.password = "aaaaaaa"  
+      @user.password = "ああああああ"  
       @user.valid?
-      # binding.pry
-      expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+      expect(@user.errors.full_messages).to include("Password is invalid. Input full-width katakana characters.")
      end
 
      it "passwordが空では登録できないこと" do
