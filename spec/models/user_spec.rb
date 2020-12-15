@@ -42,10 +42,10 @@ require 'rails_helper'
       expect(another_user.errors.full_messages).to include("Email has already been taken")
     end
 
-     it "password:半角英数混合（半角英語のみ）" do
+     it "password:半角英数混合（半角英語のみ）以外だと登録できない" do
       @user.password = "ああああああ"  
       @user.valid?
-      expect(@user.errors.full_messages).to include("Password is invalid. Input full-width katakana characters.")
+      expect(@user.errors.full_messages).to include("Password には半角英字と半角数字の両方を含めて設定してください")
      end
 
      it "passwordが空では登録できないこと" do
@@ -53,6 +53,18 @@ require 'rails_helper'
       @user.valid?
       expect(@user.errors.full_messages).to include("Password can't be blank")
       end
+
+      it "passwordが数字のみでは登録できないこと" do
+        @user.password = "111111"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password には半角英字と半角数字の両方を含めて設定してください")
+        end
+
+        it "passwordが英字のみでは登録できないこと" do
+          @user.password = "aaaaaa"
+          @user.valid?
+          expect(@user.errors.full_messages).to include("Password には半角英字と半角数字の両方を含めて設定してください")
+          end
 
     it "passwordが5文字以下であれば登録できないこと" do
       @user.password = "a1234"

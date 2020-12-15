@@ -12,8 +12,12 @@ class User < ApplicationRecord
     validates :first_hurigana, format: { with: /\A[ァ-ヶー－]+\z/, message: "is invalid. Input full-width katakana characters."}
     validates :nickname  
     validates :birth
-    validates :password, format: { with: /\A[a-zA-Z0-9]+\z/, message: "is invalid. Input full-width katakana characters."}
+    validates :password 
   end
+
+  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
+  validates_format_of :password, with: PASSWORD_REGEX, message: 'には半角英字と半角数字の両方を含めて設定してください' 
+
 
   has_many :items
   has_many :buyers
