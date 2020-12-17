@@ -31,7 +31,7 @@
 | comments  | text   | null: false |
 
 ### Association
-- belong_to :user
+- belongs_to :user
 - has_one :buyer
 
 
@@ -42,8 +42,8 @@
 | item   | references | foreign_key:true |
 
 ### Association
-- belong_to :item
-- belong_to :user
+- belongs_to :item
+- belongs_to :user
 - has_one : address
 
 ## address テーブル
@@ -58,4 +58,4 @@
 | buyer  | reference  | foreign_key:true |
 
 ### Association
-- belong_to :buyer
+- belongs_to :buyer
