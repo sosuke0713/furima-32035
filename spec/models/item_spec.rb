@@ -34,13 +34,13 @@ require 'rails_helper'
      end
 
      it "priceが299円以下だと出品できない。" do
-      @item.price = "299"  
+      @item.price = 299  
       @item.valid?
       expect(@item.errors.full_messages).to include ("Price is out of setting range")
      end
 
      it "priceが100,000,000円以上だと出品できない。" do
-      @item.price = "10000000"  
+      @item.price = 10000000  
       @item.valid?
       expect(@item.errors.full_messages).to include ("Price is out of setting range")
      end
@@ -52,31 +52,31 @@ require 'rails_helper'
      end
 
      it "categoryに0が選ばれていると出品できない" do
-      @item.category_id = "0"  
+      @item.category_id = 0  
       @item.valid?
       expect(@item.errors.full_messages).to include ("Category must be other than 0")
      end
 
      it "statusに0が選ばれていると出品できない" do
-      @item.status_id = "0"  
+      @item.status_id = 0  
       @item.valid?
       expect(@item.errors.full_messages).to include ("Status must be other than 0")
      end
 
      it "deliveryfeeに0が選ばれていると出品できない" do
-      @item.deliveryfee_id = "0"  
+      @item.deliveryfee_id = 0  
       @item.valid?
       expect(@item.errors.full_messages).to include ("Deliveryfee must be other than 0")
      end
 
      it "stateに0が選ばれていると出品できない" do
-      @item.state_id = "0"  
+      @item.state_id = 0  
       @item.valid?
       expect(@item.errors.full_messages).to include ("State must be other than 0")
      end
 
      it "shippingdateに0が選ばれていると出品できない" do
-      @item.shippingdate_id = "0"  
+      @item.shippingdate_id = 0  
       @item.valid?
       expect(@item.errors.full_messages).to include ("Shippingdate must be other than 0")
      end
