@@ -14,6 +14,13 @@ require 'rails_helper'
     end
    
     context '商品出品がうまくいかない'do
+
+    it "imageがないと出品できない" do
+      @item.image = nil #""ではだめ
+      @item.valid?
+      expect(@item.errors.full_messages).to include ("Image can't be blank")
+     end
+
      it "titleが空だと出品できない" do
       @item.title = "" 
       @item.valid?
@@ -21,13 +28,19 @@ require 'rails_helper'
      end
 
      it "priceが空では出品できない" do
-      @item.price = ""  
+      @item.price = nil #""でも可
       @item.valid?
       expect(@item.errors.full_messages).to include ("Price can't be blank")
      end
 
-     it "priceが¥300~¥9999999でなければ出品できない" do
-      @item.price = "200"  
+     it "priceが299円以下だと出品できない。" do
+      @item.price = "299"  
+      @item.valid?
+      expect(@item.errors.full_messages).to include ("Price is out of setting range")
+     end
+
+     it "priceが100,000,000円以上だと出品できない。" do
+      @item.price = "10000000"  
       @item.valid?
       expect(@item.errors.full_messages).to include ("Price is out of setting range")
      end
@@ -38,39 +51,37 @@ require 'rails_helper'
       expect(@item.errors.full_messages).to include ("Price is out of setting range")
      end
 
-
-
-     it "categoryが空では出品できない" do
-      @item.category_id = ""  
+     it "categoryに0が選ばれていると出品できない" do
+      @item.category_id = "0"  
       @item.valid?
-      expect(@item.errors.full_messages).to include ("Category can't be blank")
+      expect(@item.errors.full_messages).to include ("Category must be other than 0")
      end
 
-     it "statusが空では出品できない" do
-      @item.status_id = ""  
+     it "statusに0が選ばれていると出品できない" do
+      @item.status_id = "0"  
       @item.valid?
-      expect(@item.errors.full_messages).to include ("Status can't be blank")
+      expect(@item.errors.full_messages).to include ("Status must be other than 0")
      end
 
-     it "deliveryfeeが空では出品できない" do
-      @item.deliveryfee_id = ""  
+     it "deliveryfeeに0が選ばれていると出品できない" do
+      @item.deliveryfee_id = "0"  
       @item.valid?
-      expect(@item.errors.full_messages).to include ("Deliveryfee can't be blank")
+      expect(@item.errors.full_messages).to include ("Deliveryfee must be other than 0")
      end
 
-     it "stateが空では出品できない" do
-      @item.state_id = ""  
+     it "stateに0が選ばれていると出品できない" do
+      @item.state_id = "0"  
       @item.valid?
-      expect(@item.errors.full_messages).to include ("State can't be blank")
+      expect(@item.errors.full_messages).to include ("State must be other than 0")
      end
 
-     it "shippingdateが空では出品できない" do
-      @item.shippingdate_id = ""  
+     it "shippingdateに0が選ばれていると出品できない" do
+      @item.shippingdate_id = "0"  
       @item.valid?
-      expect(@item.errors.full_messages).to include ("Shippingdate can't be blank")
+      expect(@item.errors.full_messages).to include ("Shippingdate must be other than 0")
      end
 
-     it "textが空では出品できない" do
+     it "commentsが空では出品できない" do
       @item.comments = ""  
       @item.valid?
       expect(@item.errors.full_messages).to include ("Comments can't be blank")
