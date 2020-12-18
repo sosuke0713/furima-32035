@@ -20,7 +20,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @items = Item.new
+    #@items = Item.new
   end
 
 
