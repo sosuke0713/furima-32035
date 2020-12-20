@@ -3,7 +3,6 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-<<<<<<< Updated upstream
 
   with_options presence: true do
     validates :email
@@ -23,6 +22,4 @@ class User < ApplicationRecord
   has_many :items
   has_many :buyers
    
-=======
->>>>>>> Stashed changes
 end
