@@ -21,18 +21,15 @@ class ItemsController < ApplicationController
   end
 
   def show
-    #@item = Item.find(params[:id])= before_action :set_itemにてまとめたためコメントアウトしている。
   end
 
   def edit
-    #@item = Item.find(params[:id])
     unless current_user.id == @item.user.id
       redirect_to root_path
     end
   end
 
   def update
-    #@item = Item.find(params[:id])
     if @item.valid?
       if current_user.id == @item.user.id
         @item.update(items_params)
