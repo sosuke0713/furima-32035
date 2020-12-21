@@ -42,11 +42,10 @@ class ItemsController < ApplicationController
 
   def destroy
     if current_user.id == @item.user.id
-        @item.destroy
-        redirect_to root_path
+      @item.destroy
     end
+    redirect_to root_path  #current_userと出品者が一致してもしなくても、いつでもリダイレクト
   end
-
 
   private
 
