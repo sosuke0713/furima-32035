@@ -1,7 +1,7 @@
 class OrderTag
 
   include ActiveModel::Model
-  attr_accessor :post_code, :city, :house_number, :building_name, :phone_number, :buyer_id, :state_id, :user_id, :item_id, :token
+  attr_accessor :post_code, :city, :house_number, :building_name, :phone_number, :state_id, :user_id, :item_id, :token
 
   with_options presence: true do
     validates :post_code
