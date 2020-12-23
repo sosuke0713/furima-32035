@@ -59,3 +59,4 @@
 
 ### Association
 - belongs_to :buyer
+
