@@ -16,7 +16,17 @@ RSpec.describe OrderTag, type: :model do
     end
 
     context '購入ができない場合' do
-      it '郵便番号が空であるとき' do
+      it '出品者が空であるとき' do
+        @item_form.user_id = nil
+        @item_form.valid?
+        expect(@item_form.errors.full_messages).to include("User can't be blank")
+      end
+      it '商品名が空であるとき' do
+        @item_form.item_id = nil
+        @item_form.valid?
+        expect(@item_form.errors.full_messages).to include("Item can't be blank")
+      end
+        it '郵便番号が空であるとき' do
         @item_form.post_code = nil
         @item_form.valid?
         expect(@item_form.errors.full_messages).to include("Post code can't be blank")
