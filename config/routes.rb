@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   
   root to: "items#index"
   resources :items do #7つアクション全て使用しているので
+    resources :buyers, only:[:index, :create]
   end
 end
